@@ -1,0 +1,421 @@
+<!DOCTYPE html>
+<html lang="es" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>La Fredes | Restaurante Peruano</title>
+    <meta name="description" content="Disfruta de los sabores de La Fredes. Explora nuestra carta digital y realiza tu pedido directamente por WhatsApp.">
+    
+    <!-- Open Graph -->
+    <meta property="og:title" content="La Fredes | Restaurante Peruano">
+    <meta property="og:description" content="Disfruta de los sabores de La Fredes. Explora nuestra carta digital y realiza tu pedido directamente por WhatsApp.">
+    <meta property="og:image" content="./img/Logo_LaFredes_Final_1.png">
+    <meta property="og:type" content="website">
+
+    <!-- Favicon -->
+    <link rel="icon" href="./img/Logo_LaFredes_Final_1.png" type="image/png">
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <!-- Playfair Display para títulos (elegante/artesanal) e Inter para textos -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&display=swap" rel="stylesheet">
+    <!-- Iconos -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        chocolate: '#2A170C',
+                        cream: '#FCF3E0',
+                        gold: '#F3C247',
+                        terracotta: '#DD563B',
+                        brownsec: '#734E30',
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                        serif: ['Playfair Display', 'serif'],
+                    },
+                    boxShadow: {
+                        'soft': '0 4px 20px -2px rgba(42, 23, 12, 0.05)',
+                        'floating': '0 10px 40px -10px rgba(42, 23, 12, 0.15)',
+                    }
+                }
+            }
+        }
+    </script>
+
+    <!-- Custom Styles -->
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body class="bg-cream text-chocolate font-sans antialiased overflow-x-hidden selection:bg-gold selection:text-chocolate">
+
+    <!-- Navbar -->
+    <nav id="navbar" class="fixed w-full z-50 transition-all duration-300 py-4 px-6 md:px-12 flex justify-between items-center bg-transparent">
+        <div class="flex items-center gap-3">
+            <div class="bg-white rounded-full p-0.5 shadow-md border-2 border-gold">
+                <img src="./img/Logo_LaFredes_Final_1.png" alt="La Fredes Logo" class="h-10 w-10 md:h-12 md:w-12 object-cover rounded-full" onerror="this.src='https://via.placeholder.com/100x40/2A170C/F3C247?text=LA+FREDES'">
+            </div>
+            <span class="font-serif font-bold text-xl md:text-2xl text-cream drop-shadow-md hidden md:block">La Fredes</span>
+        </div>
+        
+        <div class="hidden md:flex items-center gap-8 font-medium text-cream drop-shadow-md">
+            <a href="#inicio" class="hover:text-gold transition-colors">Inicio</a>
+            <a href="#carta" class="hover:text-gold transition-colors">Carta</a>
+            <a href="#nosotros" class="hover:text-gold transition-colors">Nosotros</a>
+            <a href="#informacion" class="hover:text-gold transition-colors">Contacto</a>
+        </div>
+
+        <div class="flex items-center gap-4">
+            <button id="cart-btn" class="relative p-2 text-cream hover:text-gold transition-colors drop-shadow-md bg-chocolate/30 rounded-full backdrop-blur-sm">
+                <i data-lucide="shopping-cart"></i>
+                <span id="cart-badge" class="absolute -top-1 -right-1 bg-terracotta text-white text-[10px] font-bold h-5 w-5 rounded-full flex items-center justify-center scale-0 transition-transform duration-300">0</span>
+            </button>
+            <button id="mobile-menu-btn" class="md:hidden p-2 text-cream drop-shadow-md bg-chocolate/30 rounded-full backdrop-blur-sm">
+                <i data-lucide="menu"></i>
+            </button>
+        </div>
+    </nav>
+
+    <!-- Mobile Menu Overlay -->
+    <div id="mobile-menu" class="fixed inset-0 bg-chocolate z-40 transform translate-x-full transition-transform duration-300 flex flex-col justify-center items-center text-cream text-2xl font-serif gap-8">
+        <button id="close-menu-btn" class="absolute top-6 right-6 p-2 text-gold">
+            <i data-lucide="x" class="w-8 h-8"></i>
+        </button>
+        <div class="bg-white rounded-full p-1 shadow-lg border-2 border-gold mb-4">
+            <img src="./img/Logo_LaFredes_Final_1.png" alt="La Fredes" class="h-24 w-24 object-cover rounded-full" onerror="this.style.display='none'">
+        </div>
+        <a href="#inicio" class="mobile-link hover:text-gold transition-colors">Inicio</a>
+        <a href="#carta" class="mobile-link hover:text-gold transition-colors">Carta</a>
+        <a href="#nosotros" class="mobile-link hover:text-gold transition-colors">Nosotros</a>
+        <a href="#informacion" class="mobile-link hover:text-gold transition-colors">Contacto</a>
+    </div>
+
+    <!-- Hero Section -->
+    <header id="inicio" class="relative h-[90vh] min-h-[600px] flex items-center justify-center overflow-hidden">
+        <div class="absolute inset-0 z-0">
+            <img src="https://images.unsplash.com/photo-1543353071-10c8ba85a904?q=80&w=2000&auto=format&fit=crop" alt="Gastronomía peruana" class="w-full h-full object-cover">
+            <div class="absolute inset-0 bg-gradient-to-b from-chocolate/70 via-chocolate/50 to-chocolate/90"></div>
+        </div>
+        
+        <div class="relative z-10 text-center px-4 flex flex-col items-center max-w-4xl mx-auto">
+            <span class="text-gold font-medium tracking-widest uppercase text-sm md:text-base mb-4 flex items-center gap-2">
+                <span class="w-8 h-[1px] bg-gold"></span>
+                Del Perú a tu mesa
+                <span class="w-8 h-[1px] bg-gold"></span>
+            </span>
+            <h1 class="font-serif text-5xl md:text-7xl lg:text-8xl text-cream font-bold mb-6 drop-shadow-lg">LA FREDES</h1>
+            <p id="hero-desc" class="text-cream/90 text-lg md:text-xl mb-10 max-w-2xl font-light">Sabores que nacen de nuestra tierra y llegan directo a tu mesa.</p>
+            
+            <div class="flex flex-col sm:flex-row gap-4 w-full sm:w-auto">
+                <a href="#carta" class="bg-terracotta text-white px-8 py-4 rounded-full font-medium hover:bg-terracotta/90 transition-all shadow-lg hover:shadow-terracotta/30 flex items-center justify-center gap-2">
+                    <i data-lucide="utensils" class="w-5 h-5"></i>
+                    Pedir ahora
+                </a>
+                <a href="#carta" class="bg-transparent border border-gold text-gold px-8 py-4 rounded-full font-medium hover:bg-gold hover:text-chocolate transition-all flex items-center justify-center">
+                    Ver nuestra carta
+                </a>
+            </div>
+        </div>
+
+        <div class="absolute bottom-10 left-1/2 transform -translate-x-1/2 animate-bounce text-gold/50 z-10">
+            <i data-lucide="chevron-down" class="w-8 h-8"></i>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="relative bg-cream z-10 rounded-t-[2rem] -mt-8 pt-12 pb-24 shadow-[0_-10px_40px_rgba(42,23,12,0.1)]">
+        
+        <!-- Elemento decorativo -->
+        <div class="absolute top-0 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-16 h-1 bg-gold rounded-full"></div>
+
+        <!-- Carta Digital Section -->
+        <section id="carta" class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mb-20 pt-8">
+            <div class="text-center mb-10">
+                <h2 class="font-serif text-3xl md:text-4xl text-chocolate font-bold mb-4 flex items-center justify-center gap-3">
+                    <i data-lucide="chef-hat" class="text-gold w-8 h-8"></i>
+                    Nuestra Carta
+                </h2>
+                <p class="text-brownsec font-light">Descubre nuestros platos preparados con la receta original.</p>
+            </div>
+
+            <!-- Buscador -->
+            <div class="max-w-md mx-auto mb-8 relative">
+                <input type="text" id="search-input" placeholder="¿Qué se te antoja hoy?" class="w-full bg-white border border-chocolate/10 rounded-full py-3 pl-12 pr-4 focus:outline-none focus:ring-2 focus:ring-gold focus:border-transparent shadow-soft transition-all placeholder:text-chocolate/40 text-chocolate">
+                <i data-lucide="search" class="absolute left-4 top-1/2 transform -translate-y-1/2 text-chocolate/40 w-5 h-5"></i>
+            </div>
+
+            <!-- Categorías -->
+            <div class="overflow-x-auto hide-scrollbar mb-12 -mx-4 px-4 sm:mx-0 sm:px-0">
+                <div id="categories-container" class="flex gap-3 pb-4 w-max sm:w-auto sm:flex-wrap justify-start sm:justify-center">
+                    <!-- Categorías generadas por JS -->
+                </div>
+            </div>
+
+            <!-- Grid de Productos -->
+            <div id="products-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
+                <!-- Productos generados por JS -->
+            </div>
+            
+            <!-- Mensaje de no resultados -->
+            <div id="no-results" class="hidden text-center py-12 text-brownsec">
+                <i data-lucide="search-x" class="w-12 h-12 mx-auto mb-3 opacity-50"></i>
+                <p>No encontramos platos con ese nombre.</p>
+            </div>
+        </section>
+
+        <!-- Nosotros Section -->
+        <section id="nosotros" class="bg-chocolate text-cream py-20 relative overflow-hidden">
+            <div class="absolute inset-0 opacity-5">
+                <div class="absolute w-full h-full" style="background-image: radial-gradient(#F3C247 1px, transparent 1px); background-size: 30px 30px;"></div>
+            </div>
+            <!-- Logo flotante transparente como marca de agua -->
+            <img src="./img/Logo_LaFredes_Final_1-removebg-preview.png" alt="" class="absolute -right-20 top-1/2 transform -translate-y-1/2 h-[120%] opacity-10 pointer-events-none select-none">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+                <div class="flex flex-col lg:flex-row items-center gap-12">
+                    <div class="lg:w-1/2 text-center lg:text-left">
+                        <span class="text-gold uppercase tracking-widest text-sm font-medium mb-2 block">Nuestra Historia</span>
+                        <h2 class="font-serif text-3xl md:text-5xl font-bold mb-6">Sabores que cuentan<br><span class="text-gold">nuestra historia</span></h2>
+                        <p id="about-text" class="text-cream/80 text-lg font-light leading-relaxed mb-8">
+                            <!-- Texto desde data.js -->
+                        </p>
+                        <div class="flex items-center gap-6 justify-center lg:justify-start">
+                            <div class="text-center">
+                                <span class="block text-gold font-serif text-3xl font-bold mb-1">+10</span>
+                                <span class="text-xs uppercase tracking-wider text-cream/60">Años de tradición</span>
+                            </div>
+                            <div class="w-px h-12 bg-gold/30"></div>
+                            <div class="text-center">
+                                <span class="block text-gold font-serif text-3xl font-bold mb-1">100%</span>
+                                <span class="text-xs uppercase tracking-wider text-cream/60">Ingredientes peruanos</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="lg:w-1/2 relative">
+                        <div class="absolute -inset-4 border border-gold/30 rounded-2xl transform translate-x-4 translate-y-4"></div>
+                        <img src="https://images.unsplash.com/photo-1555939594-58d7cb561ad1?q=80&w=800&auto=format&fit=crop" alt="Nuestra cocina" class="rounded-2xl relative z-10 w-full h-[400px] object-cover shadow-2xl">
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Información Section -->
+        <section id="informacion" class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20">
+            <div class="bg-white rounded-3xl shadow-soft p-8 md:p-12 border border-chocolate/5 relative overflow-hidden">
+                <div class="absolute top-0 right-0 w-64 h-64 bg-gold/10 rounded-full blur-3xl transform translate-x-1/2 -translate-y-1/2"></div>
+                <div class="absolute bottom-0 left-0 w-64 h-64 bg-terracotta/5 rounded-full blur-3xl transform -translate-x-1/2 translate-y-1/2"></div>
+                
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-10 relative z-10">
+                    <div class="flex flex-col items-center text-center">
+                        <div class="w-14 h-14 bg-cream rounded-full flex items-center justify-center text-chocolate mb-4 border border-gold/30">
+                            <i data-lucide="map-pin"></i>
+                        </div>
+                        <h3 class="font-serif text-xl font-bold mb-2">Visítanos</h3>
+                        <p id="info-address" class="text-brownsec font-light mb-4">Av. Principal 123, Trujillo</p>
+                        <a id="btn-directions" href="#" target="_blank" class="text-sm font-medium text-terracotta hover:text-chocolate transition-colors uppercase tracking-wide">Cómo llegar &rarr;</a>
+                    </div>
+                    
+                    <div class="flex flex-col items-center text-center border-y md:border-y-0 md:border-x border-chocolate/10 py-10 md:py-0 md:px-10">
+                        <div class="w-14 h-14 bg-cream rounded-full flex items-center justify-center text-chocolate mb-4 border border-gold/30">
+                            <i data-lucide="clock"></i>
+                        </div>
+                        <h3 class="font-serif text-xl font-bold mb-2">Horario</h3>
+                        <p id="info-hours" class="text-brownsec font-light">Lun - Dom: 12:00 PM - 10:00 PM</p>
+                    </div>
+                    
+                    <div class="flex flex-col items-center text-center">
+                        <div class="w-14 h-14 bg-cream rounded-full flex items-center justify-center text-chocolate mb-4 border border-gold/30">
+                            <i data-lucide="message-circle"></i>
+                        </div>
+                        <h3 class="font-serif text-xl font-bold mb-2">Contacto</h3>
+                        <p class="text-brownsec font-light mb-4">Pedidos al instante</p>
+                        <div class="flex gap-3">
+                            <a id="social-wa" href="#" class="w-10 h-10 bg-chocolate text-cream rounded-full flex items-center justify-center hover:bg-gold hover:text-chocolate transition-colors"><i data-lucide="phone" class="w-4 h-4"></i></a>
+                            <a id="social-ig" href="#" class="w-10 h-10 bg-chocolate text-cream rounded-full flex items-center justify-center hover:bg-gold hover:text-chocolate transition-colors"><i data-lucide="instagram" class="w-4 h-4"></i></a>
+                            <a id="social-fb" href="#" class="w-10 h-10 bg-chocolate text-cream rounded-full flex items-center justify-center hover:bg-gold hover:text-chocolate transition-colors"><i data-lucide="facebook" class="w-4 h-4"></i></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-chocolate text-cream border-t-[8px] border-gold">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+            <div class="flex flex-col md:flex-row justify-between items-center gap-8">
+                <div class="flex flex-col items-center md:items-start">
+                    <img src="./img/Logo_LaFredes_Final_1-removebg-preview.png" alt="La Fredes Logo" class="h-28 mb-2 filter drop-shadow-lg" onerror="this.src='https://via.placeholder.com/150x50/2A170C/F3C247?text=LA+FREDES'">
+                    <p class="text-gold font-serif italic text-lg mb-4">"Del Perú a tu mesa"</p>
+                </div>
+                
+                <div class="flex gap-6 text-cream/70">
+                    <a href="#inicio" class="hover:text-gold transition-colors">Inicio</a>
+                    <a href="#carta" class="hover:text-gold transition-colors">Carta</a>
+                    <a href="#nosotros" class="hover:text-gold transition-colors">Nosotros</a>
+                </div>
+            </div>
+            
+            <div class="border-t border-cream/10 mt-8 pt-8 flex flex-col md:flex-row justify-between items-center text-sm text-cream/50 gap-4">
+                <p>&copy; <span id="current-year"></span> La Fredes. Todos los derechos reservados.</p>
+                <p>Desarrollado con ♥ para los amantes de la gastronomía peruana.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Botón Flotante Mobile -->
+    <button id="floating-cart" class="fixed bottom-6 left-1/2 transform -translate-x-1/2 w-[90%] md:hidden bg-terracotta text-white py-4 px-6 rounded-full shadow-[0_10px_25px_rgba(221,86,59,0.4)] flex justify-between items-center z-40 transition-transform translate-y-32 active:scale-95">
+        <div class="flex items-center gap-3">
+            <div class="relative">
+                <i data-lucide="shopping-bag"></i>
+                <span id="float-badge" class="absolute -top-2 -right-2 bg-chocolate text-gold text-xs font-bold w-5 h-5 rounded-full flex items-center justify-center">0</span>
+            </div>
+            <span class="font-medium">Ver pedido</span>
+        </div>
+        <span id="float-total" class="font-bold">S/ 0.00</span>
+    </button>
+
+    <!-- Carrito Sidebar Overlay -->
+    <div id="cart-overlay" class="fixed inset-0 bg-chocolate/50 backdrop-blur-sm z-50 opacity-0 pointer-events-none transition-opacity duration-300"></div>
+    
+    <!-- Carrito Sidebar -->
+    <div id="cart-sidebar" class="fixed top-0 right-0 h-full w-full md:w-[450px] bg-white z-50 transform translate-x-full transition-transform duration-300 shadow-2xl flex flex-col">
+        <!-- Header Carrito -->
+        <div class="bg-chocolate text-cream px-6 py-5 flex justify-between items-center">
+            <h3 class="font-serif text-2xl font-bold flex items-center gap-2">
+                <i data-lucide="shopping-cart" class="text-gold"></i>
+                Mi Pedido
+            </h3>
+            <button id="close-cart-btn" class="p-2 text-cream hover:text-gold transition-colors">
+                <i data-lucide="x"></i>
+            </button>
+        </div>
+
+        <!-- Scrollable Content -->
+        <div class="flex-1 overflow-y-auto bg-cream/30 hide-scrollbar flex flex-col">
+            <!-- Pasos (Tabs) -->
+            <div class="flex border-b border-chocolate/10 bg-white sticky top-0 z-10">
+                <button id="tab-cart" class="flex-1 py-3 text-sm font-bold text-chocolate border-b-2 border-terracotta transition-colors">1. Productos</button>
+                <button id="tab-checkout" class="flex-1 py-3 text-sm font-medium text-chocolate/50 border-b-2 border-transparent transition-colors disabled:opacity-50" disabled>2. Datos</button>
+            </div>
+
+            <!-- Vista 1: Productos -->
+            <div id="view-cart" class="flex-1 flex flex-col p-6">
+                <div id="cart-items" class="flex-1 space-y-4">
+                    <!-- Items generados por JS -->
+                    <div class="h-full flex flex-col items-center justify-center text-brownsec py-12 opacity-70">
+                        <i data-lucide="shopping-bag" class="w-16 h-16 mb-4 text-chocolate/20"></i>
+                        <p>Tu carrito está vacío.</p>
+                        <p class="text-sm mt-2">¡Anímate a probar algo delicioso!</p>
+                    </div>
+                </div>
+
+                <div id="cart-summary" class="mt-8 bg-white p-5 rounded-2xl shadow-sm border border-chocolate/5 hidden">
+                    <div class="flex justify-between text-brownsec mb-2">
+                        <span>Subtotal</span>
+                        <span id="cart-subtotal">S/ 0.00</span>
+                    </div>
+                    <div class="flex justify-between font-bold text-xl text-chocolate pt-3 border-t border-chocolate/10 mt-2">
+                        <span>Total</span>
+                        <span id="cart-total">S/ 0.00</span>
+                    </div>
+                    <button id="btn-continue" class="w-full bg-terracotta text-white py-4 rounded-xl font-medium mt-6 hover:bg-terracotta/90 transition-all flex items-center justify-center gap-2 shadow-lg active:scale-95">
+                        Continuar con mi pedido <i data-lucide="arrow-right" class="w-4 h-4"></i>
+                    </button>
+                </div>
+            </div>
+
+            <!-- Vista 2: Formulario Checkout -->
+            <div id="view-checkout" class="flex-1 flex flex-col p-6 hidden">
+                <form id="checkout-form" class="space-y-5 flex-1">
+                    
+                    <div class="space-y-1">
+                        <label class="text-sm font-medium text-chocolate block">Nombre completo *</label>
+                        <input type="text" id="c-name" required class="w-full border border-chocolate/20 rounded-lg px-4 py-3 focus:outline-none focus:ring-2 focus:ring-gold focus:border-transparent bg-white">
+                    </div>
+
+                    <div class="space-y-1">
+                        <label class="text-sm font-medium text-chocolate block">Teléfono *</label>
+                        <input type="tel" id="c-phone" required class="w-full border border-chocolate/20 rounded-lg px-4 py-3 focus:outline-none focus:ring-2 focus:ring-gold focus:border-transparent bg-white">
+                    </div>
+
+                    <div class="space-y-1">
+                        <label class="text-sm font-medium text-chocolate block">Tipo de pedido *</label>
+                        <div class="grid grid-cols-2 gap-3">
+                            <label class="border border-chocolate/20 rounded-lg p-3 flex items-center gap-2 cursor-pointer hover:border-gold transition-colors bg-white group">
+                                <input type="radio" name="orderType" value="Delivery" checked class="text-terracotta focus:ring-terracotta w-4 h-4">
+                                <span class="text-sm font-medium text-chocolate group-hover:text-gold transition-colors">Delivery</span>
+                            </label>
+                            <label class="border border-chocolate/20 rounded-lg p-3 flex items-center gap-2 cursor-pointer hover:border-gold transition-colors bg-white group">
+                                <input type="radio" name="orderType" value="Recojo en local" class="text-terracotta focus:ring-terracotta w-4 h-4">
+                                <span class="text-sm font-medium text-chocolate group-hover:text-gold transition-colors">Recojo local</span>
+                            </label>
+                        </div>
+                    </div>
+
+                    <!-- Campos Delivery -->
+                    <div id="delivery-fields" class="space-y-5 bg-chocolate/5 p-4 rounded-xl border border-chocolate/10">
+                        <div class="space-y-1">
+                            <label class="text-sm font-medium text-chocolate block">Dirección *</label>
+                            <input type="text" id="c-address" class="w-full border border-chocolate/20 rounded-lg px-4 py-3 focus:outline-none focus:ring-2 focus:ring-gold focus:border-transparent bg-white">
+                        </div>
+                        <div class="space-y-1">
+                            <label class="text-sm font-medium text-chocolate block">Distrito / Zona *</label>
+                            <input type="text" id="c-district" class="w-full border border-chocolate/20 rounded-lg px-4 py-3 focus:outline-none focus:ring-2 focus:ring-gold focus:border-transparent bg-white">
+                        </div>
+                        <div class="space-y-1">
+                            <label class="text-sm font-medium text-chocolate block">Referencia (Opcional)</label>
+                            <input type="text" id="c-ref" class="w-full border border-chocolate/20 rounded-lg px-4 py-3 focus:outline-none focus:ring-2 focus:ring-gold focus:border-transparent bg-white">
+                        </div>
+                    </div>
+
+                    <div class="space-y-1">
+                        <label class="text-sm font-medium text-chocolate block">Forma de pago *</label>
+                        <select id="c-payment" required class="w-full border border-chocolate/20 rounded-lg px-4 py-3 focus:outline-none focus:ring-2 focus:ring-gold focus:border-transparent bg-white appearance-none">
+                            <option value="">Seleccione...</option>
+                            <!-- Opciones generadas desde data.js -->
+                        </select>
+                    </div>
+
+                    <div id="cash-field" class="space-y-1 hidden">
+                        <label class="text-sm font-medium text-chocolate block">¿Con cuánto pagará? (Opcional)</label>
+                        <input type="text" id="c-cash-amount" placeholder="Ej: 100 soles" class="w-full border border-chocolate/20 rounded-lg px-4 py-3 focus:outline-none focus:ring-2 focus:ring-gold focus:border-transparent bg-white">
+                    </div>
+
+                    <div class="space-y-1">
+                        <label class="text-sm font-medium text-chocolate block">Observaciones (Opcional)</label>
+                        <textarea id="c-obs" rows="2" placeholder="Ej. Sin cebolla, poco picante..." class="w-full border border-chocolate/20 rounded-lg px-4 py-3 focus:outline-none focus:ring-2 focus:ring-gold focus:border-transparent bg-white resize-none"></textarea>
+                    </div>
+
+                    <label class="flex items-start gap-3 cursor-pointer mt-4 group">
+                        <input type="checkbox" id="c-confirm" required class="mt-1 text-terracotta focus:ring-terracotta rounded">
+                        <span class="text-sm text-brownsec leading-snug group-hover:text-chocolate transition-colors">He revisado mi pedido y mis datos son correctos.</span>
+                    </label>
+
+                    <div id="form-error" class="hidden text-terracotta text-sm font-medium bg-terracotta/10 p-3 rounded-lg flex items-center gap-2">
+                        <i data-lucide="alert-circle" class="w-4 h-4"></i>
+                        <span>Por favor completa todos los campos obligatorios.</span>
+                    </div>
+
+                    <button type="submit" class="w-full bg-[#25D366] text-white py-4 rounded-xl font-medium mt-6 hover:bg-[#1EBE5A] transition-all flex items-center justify-center gap-2 shadow-lg active:scale-95 mb-4">
+                        <i data-lucide="message-circle" class="w-5 h-5 fill-current"></i>
+                        Enviar pedido por WhatsApp
+                    </button>
+                    <button type="button" id="btn-back-cart" class="w-full text-chocolate/60 font-medium py-2 hover:text-chocolate transition-colors mb-6 text-sm">
+                        &larr; Volver al carrito
+                    </button>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <!-- Scripts -->
+    <script src="menu.js?v=3" charset="UTF-8"></script>
+    <script src="main.js?v=3" charset="UTF-8"></script>
+</body>
+</html>
